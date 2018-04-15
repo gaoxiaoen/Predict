@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # 用来读取excel文件的数据
 import xlrd
+import os
 #Author=Sean Gao
-
 
 class CDealExcel(object):
     def __init__(self):
@@ -17,12 +17,16 @@ class CDealExcel(object):
             print(" red value = {value}".format(value = str(self.tRedPoint[key])))
 
     def GetExcelData(self,sName):
+        print os.getcwd()
         data = None
         try:
             data = xlrd.open_workbook(sName)
-
         except:
             print("解析xlsx文件失败")
+
+        if data is None:
+            print("文件不存在，路径为" + sName)
+            exit(0)
 
         table = data.sheets()[0]  # 通过索引顺序获取 获取第一个sheet的值
         nrows = table.nrows
