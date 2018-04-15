@@ -6,6 +6,6 @@ from Common.DealExcel import CDealExcel
 if __name__ == "__main__":
     print("高小恩 Create")
     a = CDealExcel()
-    a.GetExcelData("Data\LotteryPredict.xlsx")
-    # a.GetExcelData("LotteryPredict.xlsx")
+    # a.GetExcelData("Data\LotteryPredict.xlsx")
+    dealData = a.getPandasData("Data\LotteryPredict.xlsx")
     a.Show()
